@@ -36,4 +36,27 @@ const getRegisteredList = async(req, res) => {
     }
 }
 
+const addRegister = async(req,res) => {
+    try {
+        const { gName, email, pNo, sName, age, loc, ct } = req.body
+        console.log(`
+        INSERT INTO register (guardian_name, email, phone_number, student_name, age, location, class_type)
+        VALUES ('${gName}', '${email}', '${pNo}', '${sName}, '${age}', '${loc}', '${ct}')`)
+        const add = await client.query(`
+        INSERT INTO register (guardian_name, email, phone_number, student_name, age, location, class_type)
+        VALUES ('${gName}', '${email}', '${pNo}', '${sName}', '${age}', '${loc}', '${ct}')`)
+        console.log(add)
+        res.status(200).send({
+            status: 200,
+            message: 'Success'
+        })
+    } catch (error) {
+        console.log(error)
+        res.status(500).send({
+            status: 500,
+            message: 'Error while getting list'
+        })
+    }
+}
 app.get('/register', getRegisteredList)
+app.post('/add-register', addRegister)
