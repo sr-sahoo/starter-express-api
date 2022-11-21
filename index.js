@@ -15,7 +15,11 @@ client.connect()
 const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
-app.use(cors())
+var corsOptions = {
+    origin: 'https://stormy-gold-hedgehog.cyclic.app',
+    optionsSuccessStatus: 200 // For legacy browser support
+}
+app.use(cors(corsOptions))
 
 // app.listen(2000, console.log('App is running on 2000'))
 
