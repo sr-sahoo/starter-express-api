@@ -17,7 +17,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cors())
 
-app.listen(2000, console.log('App is running on 2000'))
+// app.listen(2000, console.log('App is running on 2000'))
 
 
 
@@ -38,6 +38,7 @@ const getRegisteredList = async(req, res) => {
 
 const addRegister = async(req,res) => {
     try {
+        console.log('-------------', req)
         const { gName, email, pNo, sName, age, loc, ct } = req.body
         console.log(`
         INSERT INTO register (guardian_name, email, phone_number, student_name, age, location, class_type)
