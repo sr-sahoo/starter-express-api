@@ -59,5 +59,5 @@ const addRegister = async(req,res) => {
         })
     }
 }
-app.get('/register', getRegisteredList)
-app.post('/add-register', cors(), addRegister)
+app.get('/register', cors(), getRegisteredList)
+app.post('/add-register', addRegister)
